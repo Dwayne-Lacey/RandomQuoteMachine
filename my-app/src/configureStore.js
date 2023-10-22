@@ -8,6 +8,10 @@ const initialState = {
     error: ''
 };
 
+const initialVisibilityState = {
+    visibility: "visible"
+}
+
 // Generates pending fulfilled and rejected action types
 export const fetchQuote = createAsyncThunk('quote/fetchQuote' , () => {
     return axios
@@ -24,20 +28,34 @@ const quoteSlice = createSlice({
         })
         builder.addCase(fetchQuote.fulfilled, (state, action) => {
             state.loading = false;
-            state.users = action.payload;
+            state.quote = action.payload;
             state.error = '';
         })
         builder.addCase(fetchQuote.rejected, (state, action) => {
             state.loading = false;
-            state.users = [];
+            state.quote = [];
             state.error = action.error.message;
+        })
+    }
+})
+
+const fadeSlice = createSlice({
+    name: 'visibility',
+    initialVisibilityState,
+    extraReducers: (builder) => {
+        builder.addCase("VISIBLE", (state) => {
+            state.visibility = "visible";
+        })
+        builder.addCase("HIDDEN", (state) => {
+            state.visibility = "hidden";
         })
     }
 })
 
 const store = configureStore({
     reducer: {
-        quote: quoteSlice.reducer
+        quote: quoteSlice.reducer,
+        visibility: fadeSlice.reducer
     }
 })
 
