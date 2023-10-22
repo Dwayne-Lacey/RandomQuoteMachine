@@ -4,12 +4,19 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchQuote } from '../configureStore'; 
 
+const useTestClick = () => {
+  const dispatch = useDispatch();
+  return () => dispatch(fetchQuote());
+};
+
 export const App = () => {
+
   const quote = useSelector(state => state.quote);
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(fetchQuote())
   }, [dispatch]);
+  const testClick = useTestClick();
   return (
     <div className="App">
       <Quotebox/>
@@ -19,7 +26,9 @@ export const App = () => {
       {!quote.loading && typeof quote.users == "object" ? (
         <h1>{quote.users.quote}</h1>
       ) : null}
+    <input type="button" onClick={testClick} value="New Quote" />
     </div>
+    
   );
 }
 
