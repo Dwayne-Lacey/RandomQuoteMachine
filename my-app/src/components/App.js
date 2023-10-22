@@ -1,23 +1,24 @@
-import logo from './logo.svg';
 import './App.css';
+import Quotebox from './Quotebox'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { fetchQuote } from '../configureStore'; 
 
-function App() {
+export const App = () => {
+  const quote = useSelector(state => state.quote);
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(fetchQuote())
+  }, [dispatch]);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and do the save save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Quotebox/>
+      <h1>Anotha test</h1>
+      {quote.loading && <div>Loading</div>}
+      {!quote.loading && quote.error ? <div>Error: {quote.error}</div> : null}
+      {!quote.loading && typeof quote.users == "object" ? (
+        <h1>{quote.users.quote}</h1>
+      ) : null}
     </div>
   );
 }
