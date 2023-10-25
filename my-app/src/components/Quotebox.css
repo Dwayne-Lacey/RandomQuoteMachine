@@ -1,0 +1,23 @@
+.visible {
+    opacity: 1;
+  }
+  
+  .hidden {
+    opacity: 0;
+  }
+  
+  .fade-wrapper {
+    transition: opacity ease-in-out 600ms;
+  }
+
+  h1 {
+    margin: 0;
+    padding: 0;
+    min-height: 5rem;
+    display: block;
+  }
+
+  .Quotebox {
+    background-color: snow;
+    min-height: 12rem;
+  }

@@ -1,32 +1,20 @@
 import './App.css';
 import Quotebox from './Quotebox'
-import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { fetchQuote } from '../configureStore'; 
+import { useSelector } from 'react-redux'
 
-const useTestClick = () => {
-  const dispatch = useDispatch();
-  return () => dispatch(fetchQuote());
-};
 
+ 
 export const App = () => {
+  
+  const visibility = useSelector(state => state.visibility);
+  
 
-  const quote = useSelector(state => state.quote);
-  const dispatch = useDispatch()
-  useEffect(() => {
-    dispatch(fetchQuote())
-  }, [dispatch]);
-  const testClick = useTestClick();
+  
+  
+  
   return (
-    <div className="App">
-      <Quotebox/>
-      <h1>Anotha test</h1>
-      {quote.loading && <div>Loading</div>}
-      {!quote.loading && quote.error ? <div>Error: {quote.error}</div> : null}
-      {!quote.loading && typeof quote.users == "object" ? (
-        <h1>{quote.users.quote}</h1>
-      ) : null}
-    <input type="button" onClick={testClick} value="New Quote" />
+    <div className="App" style={{background:  visibility.color}}>
+      <Quotebox />
     </div>
     
   );
