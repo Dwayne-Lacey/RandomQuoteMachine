@@ -17,7 +17,8 @@ const initialState = {
 // Initial visibility state
 const initialVisibilityState = {
     visibility: "visible",
-    color: colorGen()
+    color: colorGen(),
+    author: "Yeezy"
 }
 
 // Generates pending fulfilled and rejected action types
