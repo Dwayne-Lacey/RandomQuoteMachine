@@ -55,12 +55,13 @@ const fadeSlice = createSlice({
     name: 'visibility',
     initialState : initialVisibilityState,
     extraReducers: (builder) => {
-        builder.addCase("VISIBLE", (state) => {
+        builder.addCase("VISIBLE", (state, action) => {
             state.visibility = "visible";
-        })
-        builder.addCase("HIDDEN", (state, action) => {
-            state.visibility = "hidden";
             state.color = action.color;
+            state.author = action.author;
+        })
+        builder.addCase("HIDDEN", (state) => {
+            state.visibility = "hidden";
         })
     }
 })

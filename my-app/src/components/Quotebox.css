@@ -11,7 +11,7 @@
   }
 
   h1 {
-    margin: 0;
+    margin: 0 auto;
     padding: 0;
     min-height: 5rem;
     display: block;
@@ -19,5 +19,53 @@
 
   .Quotebox {
     background-color: snow;
-    min-height: 12rem;
+    min-height: 20rem;
+    width: 60rem;
+    border-radius: 5px;
+    font-size: 1rem;
   }
+
+  .quote {
+    font-size: 50px; 
+    font-family: "EB Garamond"; 
+    font-weight: "bold";
+    margin: 5rem 5rem 0rem 5rem;
+  }
+
+  .button {
+    display: block;
+    padding: .2rem 1.4rem;
+    border-style: none;
+    color: whitesmoke;
+    transition: 1s;
+    border-radius: 5px;
+    height: 2rem;
+    font-size: 1rem;
+  }
+
+  .button:hover {
+    filter: brightness(85%);
+  }
+
+  .social {
+    color: whitesmoke;
+    display: block;
+    padding: .2rem 1rem;
+    border-radius: 5px;
+    height: 1.5rem;
+    transition: 1s;
+    font-size: 1rem;
+    margin: 3rem 1rem;
+  }
+
+  .social:hover {
+    filter: brightness(85%);
+  }
+
+  .quote-wrapper {
+    margin: 0;
+    padding: 0;
+  }
+
+
+ 
